@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estimasi harga rumah</title>
+</head>
+<body>
+    <form action="http://localhost:5000/hasil" method="post">
+        <p>
+            Usia: <input name="age" type="number" min="0" placeholder="age" required></p>
+        <p>
+            Class: <select name = "pclass" required>
+                <option value = "1" selected>1</option>
+                <option value = "2">2</option>
+                <option value = "3">3</option>
+             </select></p>
+        <p>
+            JenisKelamin: <select name = "sex" required>
+                <option value = "male" selected>male</option>
+                <option value = "female">female</option>
+             </select></p>
+        <p>
+            Tarif: <input name="fare" type="number" min="0" placeholder="fare" required></p>
+        <p>
+            Saudara: <input name="sibsp" type="number" min="0" placeholder="siblings" required></p>
+        <p>
+            OrangTua: <input name="parch" type="number" min="0" placeholder="parch" required></p>
+        <p>
+            <input type="submit" value="OK">
+        </p>
+        </form>
+</body>
+</html>

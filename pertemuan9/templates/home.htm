@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Silahkan sign in</title>
+</head>
+<body>
+        <h1>
+            Sign in
+            </h1>
+            <form action="http://localhost:5000/signin" method="post">
+            <p>
+                Nama: <input name="nama" type="text" placeholder="Ketik nama Anda"></p>
+            <p>
+                Pass: <input name="pass" type="password" placeholder="Ketik password">
+            </p>
+            <p>
+                <input type="submit">
+            </p>
+            </form>
+            <h2>
+                Belum sign in?
+            </h2>
+            <form action="http://localhost:5000/signup" method="get">
+            <p>
+                <input type="submit" value="Signup"
+            </p>
+            </form>
+</body>
+</html>

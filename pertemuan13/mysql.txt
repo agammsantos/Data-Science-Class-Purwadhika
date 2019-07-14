@@ -1,0 +1,123 @@
+inisiasi mysql
+1. open terminal cd ke folder bin mysql
+2. mysql -u <username> -p # untuk di terminal luar
+3. .\mysql -u <username> -p # untuk di terminal vscode
+
+melihat database yang ada
+show databases;
+
+keluar mysql
+exit;
+
+membuat database di mysql
+create database <nama database>;
+
+delete database
+drop database <nama database>;
+
+menggunakan database
+use database <nama database>;
+
+melihat database yg digunakan
+select database();
+
+melihat tabel yang ada di database
+show tables;
+
+membuat tabel pada database
+create table <nama tabel>( # masing2 kolom dipisah dengan , dan ditutup dengan );
+
+mengoutput deskripsi tabel
+describe <nama tabel>;
+
+null: jika data ingin dimasukkan kedalam kolom maka 'Null' harus dirubah ke "NO"
+
+key:    - Primary key; jika suatu data didasarkan/dikaitkan pada satu key yang unik
+        - Composite key; jika suatu data didasarkan/dikaitkan pada 2 key yang berbeda agar menjadi unik
+
+melihat isi tabel
+select * from karyawan;
+
+memasukkan data kedalam tabel
+insert into karyawan values( # isi sesuai deskripsi tabel seperti jumlah kolom dan karakter dipisah , dan diakhiri dengan );
+
+steps untuk membuat tabel dengan deskripsi tertentu untuk tiap kolom
+mysql> create table pegawai(
+    -> id int auto_increment, # otomatis menambahkan int untuk data dibawahnya dan wajib menjadi primary key
+    -> name varchar(50) default 'Anonim', # boleh kosong dan apabila kosong diganti 'Anonim'
+    -> email varchar(100) not null unique, # tidak boleh kosong dan tidak boleh sama dengan data lain
+    -> bod date not null, # jenis data tanggal
+    -> gender set('P','L'), # isi kolom hanya boleh set dari 'P' dan 'L'
+    -> created_at timestamp default current_timestamp, # jenis data waktu dan default waktu sekarang
+    -> primary key (id) # menentukan data primary key
+    -> );
+
+memilih data pada kolom tertentu untuk ditampilkan
+select <nama kolom> from <nama tabel>
+
+memilih data pada kolom yang berisi data tertentu untuk ditampilkan
+select * from <nama tabel> where <nama kolom>='<isi data>'; # nama kolom dapat diganti argumen syarat seperti id%2=0
+
+mengurutkan data secara descending yg ditampilkan
+select * from <nama tabel> where <nama kolom>='<isi data>' order by <nama kolom> desc, <nama kolom tambahan yg ingin diurutkan>;
+
+menghapus data didalam tabel
+delete from <nama tabel> where <nama kolom>=<isi data>;
+
+mengganti data didalam tabel
+update <nama tabel> set <nama kolom>=<isi data> where <nama kolom yg lain>=<isi data>;
+
+menambahkan struktur tabel dengan kolom
+alter table <nama tabel> add column <nama kolom beserta propertinya>;
+
+memindahkan susunan kolom
+alter table <nama tabel> modify column <nama kolom beserta properti jenis datanya> after <nama kolom letak setelahnya>;
+
+mengubah nama kolom
+alter table <nama tabel> rename column <nama kolom lama> to <nama kolom baru>;
+
+menghapus kolom tertentu
+alter table <nama tabel> drop column <nama kolom>;
+
+menampilkan data dengan persyaratan tertentu
+select * from <nama kolom> where < argumen 1 misal upah>4000 > and < argumen 2 misal gender='p' >;
+
+menampilkan data dengan karakter tertentu
+select * from <nama tabel> where <nama kolom> like '<syarat seperti h% jika yg ingin ditampilkan diawali huruf h, %h jika yg ingin ditampilkan diakhiri huruf h, %h% jika yg ingin ditampilkan mengandung h ditengah2nya>';
+
+menampilkan data yang tidak mengandung karakter tertentu
+select * from <nama tabel> where <nama kolom> not like '<syarat>';
+
+menghitung jumlah data dalam tabel
+select count(*) from <nama tabel>;
+
+memberi alias pada perintah penampilan kolom tabel tertentu
+select count(*) as <nama alias kolom> from <nama tabel>;
+
+menghitung jumlah data dalam tabel dengan syarat tertentu
+select count(*) from <nama tabel> where <syarat>;
+
+menampilkan informasi tertentu dari kolom yg telah ada
+select <argumen 1 misal 0.03*upah> as <nama kolom baru> from <nama tabel>;
+
+menampilkan data dengan jumlah isi kolom tertentu
+select <min(<nama kolom>)/max(<nama kolom>)> as <nama kolom baru> from <nama tabel>
+
+contoh untuk menampilkan data dengan kolom gaji terbesar
+mysql> select * from pegawai
+    -> where gaji=
+    -> (select max(gaji) as upah_tertinggi from pegawai);
+
+menampilkan total dan rata-rata dari data-data pada kolom tertentu
+select sum(<nama kolom>) from <nama tabel>;
+select avg(<nama kolom>) from <nama tabel>;
+
+menampilkan rata-rata dari data-data yg diklasifikasikan oleh kolom tertentu
+select <nama kolom klasifikasi>, avg(<nama kolom>) as <nama kolom baru> from <nama tabel> group by <nama kolom klasifikasi>;
+
+menampilkan rata-rata yg diklasifikasikan dengan syarat tertentu
+select <nama kolom klasifikasi>, avg(<nama kolom>) as <nama kolom baru> from <nama tabel> group by <nama kolom klasifikasi> having <nama kolom baru beserta syaratnya>;
+
+membuat tabel baru (berjenis VIEW) berdasarkan tabel lain dengan persyaratan tertentu
+mysql> create view <nama tabel baru> as
+    -> select * from <nama tabel yg ingin diambil> where <syarat>

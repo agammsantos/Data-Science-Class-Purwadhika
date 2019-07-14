@@ -1,0 +1,98 @@
+aktivasi server mongodb di terminal 1
+cd 'C:\Program Files\MongoDB\Server\4.0\bin' -> mongod --dbpath C:\data\db # untuk pertama kali akses server
+
+aktivasi database mongodb di terminal 2
+> mongo # untuk run segala command mongodb
+
+melihat database
+> show dbs / show databases / show databases;
+
+melihat database yg sedang digunakan
+> db
+
+membuat database sekaligus menggunakannya (database baru terlihat di list dbs setelah diisi data)
+> use <nama database>
+
+menghapus database yg sdg digunakan
+> db.dropDatabase()
+
+membuat user untuk suatu database
+> db.createUser({
+... user: "agammsantos",
+... pwd: "D1199",
+... roles: ["readWrite","dbAdmin"]
+... })
+
+membuat collection (dokumen seperti tabel pada mysql)
+> db.createCollection('<nama collection>')
+
+menghapus suatu collection
+> db.<nama collection>.drop()
+
+melihat collections pada suatu database
+> show collections
+
+memasukkan data kedalam collection
+> db.<nama collection>.insert(
+... {<nama:'Drone',harga:2000000>}
+... )
+
+melihat data di dalam suatu collection
+> db.<nama collection>.find() / db.<nama collection>.find().pretty()
+
+memasukkan data secara multiple/array kedalam collection
+> db.<nama collection>.insert(
+... [
+... {<nama:'Kemeja',harga:600000>},
+... {<nama:'Jas Hujan',harga:100000,warna:'Hijau'>},
+... {<nama:'Celengan',harga:30000>}
+... ]
+... )
+
+melihat data tertentu pada collection
+> db.<nama collection>.find({<key:'value'>}).pretty()
+
+melihat data tertentu dengan syarat yg diberikan (bhs yg digunakan adalah javascript)
+> db.<nama collection>.find({<key>:{$gt:<value>}}).pretty() # greater than
+> db.<nama collection>.find({<key>:{$gte:<value>}}).pretty() # greater than or equal
+> db.<nama collection>.find({<key>:{$lt:<value>}}).pretty() # less than
+> db.<nama collection>.find({<key>:{$lte:<value>}}).pretty() # less than or equal
+
+menampilkan data secara terbatas berdasarkan id/waktu dibuat
+> db.<nama collection>.find({<key>:{$gt:<value>}}).limit(<1>).pretty()
+
+menampilkan data dengan tidak menyertakan document pada urutan tertentu
+> db.<nama collection>.find({<key>:{$gt:<value>}}).limit(<2>).skip(<1>).pretty()
+
+menampilkan jumlah dokumen yg ada pada collection
+> db.<nama collection>.find().count()
+
+menampilkan jumlah dokumen yg ada pada collection dengan beberapa syarat
+> db.<nama collection>.find(
+... {$and:[
+... {<harga: {$gt: 1000000}>},
+... {<warna:'pink'>}
+... ]}).pretty()
+> db.<nama collection>.find(
+... {$or:[
+... {<harga: {$gt: 1000000}>},
+... {<warna:'pink'>}
+... ]}).pretty()
+
+mengganti dokumen secara keseluruhan pada suatu collection
+> db.<nama collection>.update(
+... {<nama:'Drone'>},
+... {<nama:'Drone DJI',harga:1500000>}
+... )
+
+mengganti value properti tertentu pada suatu dokumen
+> db.<nama collection>.update(
+... {<nama:'Celengan'>},
+... {<$set:{harga:1500000}>}
+... )
+
+mengganti key properti tertentu pada suatu dokumen
+> db.<nama collection>.update(
+... {<nama:'Celengan'>},
+... {<$rename:{'harga':'price'}>}
+... )

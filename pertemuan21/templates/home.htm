@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Grafik</title>
+</head>
+<body>
+    <h1>
+        Masukkan data
+    </h1>
+    <form action='http://localhost:5000/grafik' method="POST">
+        <p>
+            Masukkan nama grafik:<br>
+            <input type='text' name='plot' placeholder='grafik...' required>
+        </p>
+        <p>
+            Data sb-x <input type='tel' name='x' placeholder='ex: 1,2,3,4,...'>
+        </p>
+        <p>
+            Data sb-y <input type='tel' name='y' placeholder='ex: 10,9,8,7,...'>
+        </p>
+        <p>
+            <input type="submit" value='Buat Grafik'>
+        </p>
+    </form>
+</body>
+</html>

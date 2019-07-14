@@ -1,0 +1,6 @@
+Project akhir topik dan tema bebas dengan syarat:
+1. menggunakan interface web (html dan flask, atau bebas fleksibel)
+2. menggunakan dataset asli dari luar (apapun dalam negri maupun luar negri), tidak bikin sendiri
+3. dataset yang diperoleh harus diolah
+4. dataset yang telah diolah harus ada visualisasi, namun untuk data-data yang penting dan utama saja
+5. harus mengandung machine learning, ada data training dan data testing

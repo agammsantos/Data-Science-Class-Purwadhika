@@ -1,0 +1,16 @@
+[
+{  
+    "file json sama seperti dict":"namun memakai \"\" dan diakhir list tidak boleh ada comma"
+},
+{
+    "nama":"Andi",
+    "usia":21
+},
+{
+    "nama":"Budi",
+    "usia":22
+},
+[
+    21,23,24
+]
+]

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Estimasi harga rumah</title>
+</head>
+<body>
+    <form action="http://localhost:5000/hasil" method="post">
+        <p>
+            <input name="usia" type="text" placeholder="usia rumah" required></p>
+        <p>
+            <input name="kamar" type="text" placeholder="jumlah kamar" required></p>
+        <p>
+            <input name="luas" type="text" placeholder="luas rumah" required></p>
+        <p>
+            <select name = "kota" required>
+                <option value = "Aceh" selected>Aceh</option>
+                <option value = "Bandung">Bandung</option>
+                <option value = "Jakarta">Jakarta</option>
+             </select>
+        </p>
+        <p>
+            <input type="submit" value="OK">
+        </p>
+        </form>
+</body>
+</html>

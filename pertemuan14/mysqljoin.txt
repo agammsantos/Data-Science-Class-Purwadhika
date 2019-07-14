@@ -1,0 +1,68 @@
+Buat 2 tabel
+mysql> create table user(
+    -> id int not null auto_increment,
+    -> user varchar(30) not null default 'anonymous',
+    -> kota varchar(30),
+    -> primary key(id));
+
+mysql> create table ranking(
+    -> id int not null auto_increment,
+    -> status varchar(30) default 'Newbie',
+    -> primary key(id));
+
+menyatukan dua tabel secara keseluruhan dengan nama key-key tertentu
+select * from <nama tabel 1> join <nama tabel 2> on <nama tabel 1>.<nama kolom key 1>=<nama tabel 2>.<nama kolom key 2>;
+
+menyatukan dua tabel tanpa menyertakan kolom key
+select * from <nama tabel 1> join <nama tabel 2> using (<nama kolom key>);
+
+catatan: join = inner join
+
+menyatukan suatu tabel kepada tabel kirinya berdasarkan jumlah data di tabel kirinya
+select * from <nama tabel 1> left join <nama tabel 2> using (<nama kolom key>);
+
+menyatukan suatu tabel kepada tabel kanannya berdasarkan jumlah data di tabel kanannya
+select * from <nama tabel 1> right join <nama tabel 2> using (<nama kolom key>);
+
+buat 3 tabel untuk aplikasi transaksi barang
+mysql> create table users(
+    -> id_user int not null auto_increment,
+    -> username varchar(30) default 'Pembeli X',
+    -> created_at timestamp default current_timestamp,
+    -> edited_at timestamp default current_timestamp on update current_timestamp, # nilai kolom akan berganti setiap baris tersebut diedit/diupdate
+    -> primary key (id_user));
+
+mysql> create table products(
+    -> id_product int not null auto_increment,
+    -> product_name varchar(30) default 'Barang X',
+    -> primary key (id_product));
+
+mysql> create table transaction (
+    -> id_user int not null,
+    -> id_product int not null);
+
+menyatukan ketiga tabel
+mysql> select * from
+    -> products join users join transaction # pastikan tabel transaksi di akhir join
+    -> using (id_product,id_user);
+
+menyatukan ketiga tabel satu persatu
+mysql> select * from
+    -> users inner join transaction
+    -> on users.id_user = transaction.id_user
+    -> inner join products
+    -> on transaction.id_product=products.id_product;
+
+mysql> select * from
+    -> users, products, transaction
+    -> where
+    -> users.id_user = transaction.id_user
+    -> and
+    -> transaction.id_product=products.id_product;
+
+mysql> select * from
+    -> users u, products p, transaction t
+    -> where
+    -> u.id_user = t.id_user
+    -> and
+    -> t.id_product=p.id_product;

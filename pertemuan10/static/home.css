@@ -1,0 +1,19 @@
+body{
+    background: blue;
+    font-family: impact;
+    color: white
+}
+h1{
+    text-align: center;
+    font-size: 70px;
+    text-transform: uppercase;
+    letter-spacing: 2px
+}
+.p1{
+    font-size: 30px;
+    text-align: center
+}
+#p2{
+    font-size: 15px;
+    text-align: center    
+}
