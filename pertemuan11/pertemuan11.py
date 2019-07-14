@@ -61,17 +61,3 @@ def error():
 
 if __name__=='__main__':
     app.run(debug=True)
-
-# cara inisialisasi git
-# git init # mengallow cmd git dalam folder
-# git add . # menambahkan seluruh file dalam folder ke staging
-# git add namaFile # menambahkan file ke staging
-# git commit -m "blablabla" # menambahkan file/folder di staging ke repository lokal
-# git log --oneline # untuk mengecek commit-commit terdahulu
-# git checkout <commit id> # untuk kembali ke file commit terdahulu
-# git reset <commit id> # untuk kembali ke file commit terdahulu tanpa merubah file yg telah ada sekarang dan menghapus commit setelahnya
-# git reset <commit id> --hard # untuk kembali ke file commit terdahulu dengan merubah file yg telah ada sekarang dan menghapus commit setelahnya
-# git remote add origin <url repository di github> # menambahkan repository online
-# git push -u origin master # push commit lokal ke repository online
-# git clone <url repository> # mendownload repository online ke dalam folder yg tertera di terminal
-# forking di git dapat dilakukan secara manual lewat website utk mendapatkan repo user lain dalam repo sendiri
